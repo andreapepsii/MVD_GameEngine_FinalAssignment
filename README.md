@@ -1,24 +1,22 @@
 ### La Salle - Universitat Ramon Llull : Master in Advanced Videogame Development
-## Engine Programming - 07-ScriptsSystem
+## Final Assignment for Game Engine Course (MVD) by Andrea Garcia Fàbregas
 
-### TODO 
+ The project recreates a small AI for navigation.
+ The user has a 8x12 grid, made of different floor tiles, in which to draw several paths according to their desires.
+ To create a path, the user will have to paint on the tiles of the floor with the different tiles available but always considering a path needs a start point and an end point.
 
-- create a new class called MovePlatformScript which is derived from Script (owner, teal floor entity)
-- in update function of script, translate platform up
-- add boolean to start/stop translate when key is pressed 
- - use (input_->GetKey(GLFW_KEY_xxxx) where xxxx is the key code
-
-
-- create new pointer instance of MovePlaformScript
-- register it with scripts_system
-
-
-- create a SwitchScript derived Script (owner green floor entity)
-- script gets collider component attached to owner entity
-- script also has pointer to MovePlatformScript
-- if collider is colliding, set boolean of MovePlatformScript to make it move
-- don't forget to instantiate and register SwitchScript here in Game::init
-
-- create another script with custom behviour, for example a platform that moves up and down automatically
-
-- Study the FPS movement code in ControlSystem to see how it works
+The grid has 4 different types of tiles:
+ - Red: marking the end point of a path. This can be selected by pressing the 1 key.
+ - Green: marking the start of a path. This can be selected by pressing the 2 key.
+ - White: marking a walkable floor tile. This can be selected by pressing the 3 key.
+ - Purple: marking a non-walkable floor tile. This can be selected by pressing the 4 key.
+ 
+ There's a 5th type of tile, being a dark green/black tile, this only means the tiles need to be painted by the user.
+ 
+ The player will be active, can move and has gravity, but it does not need to move. Instead it is used as a view point for its camera since it can look around through the mouse freely.  All needed to see the scene, simply move around the scene for the floor tile. It should be located somewhat beneath the player position.
+ When the program starts the user has an empty grid in front of it with black tiles, ready for the user to draw on. 
+ By pressing the numbers described earlier the user can paint the entire floor. Once it is done, an additional key (being 1 to 4) will need to be pressed in order to start the AI of the program. 
+ A teapot will appear on the start point and will move to the end point, if possible. Once it is done it will stay there until the R key is pressed and the whole process is restarted. 
+ The user can repaint the floor again if desired.
+ 
+ Finally, if the user wishes to restart painting the grid at any time, it can be done by pressing the R key.
